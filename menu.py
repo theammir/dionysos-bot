@@ -26,6 +26,10 @@ COFFEE_PICS = [
 	'https://cdn.discordapp.com/attachments/671432725109932045/797942108140601374/proxy-image.png',
 	'https://cdn.discordapp.com/attachments/671432725109932045/797942317523795998/proxy-image.png',
 	'https://cdn.discordapp.com/attachments/671432725109932045/797942406934036530/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/799655603868794933/799670984813969438/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/799655603868794933/799671062455517254/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/799655603868794933/799671263702286336/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/799655603868794933/799671407046950942/proxy-image.png',
 ]
 
 COFFEE_FACTS = [
@@ -54,6 +58,10 @@ WATER_PICS = [
 	'https://i.imgur.com/d6dkJwf.png',
 	'https://i.imgur.com/gPLqyfj.png',
 	'https://i.imgur.com/pqWgphx.png',
+	'https://cdn.discordapp.com/attachments/799655603868794933/799671661359661056/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/799655603868794933/799671749209489478/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/799655603868794933/799671841563344926/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/799655603868794933/799672003761668136/proxy-image.png',
 ]
 
 WATER_FACTS = [
@@ -87,6 +95,9 @@ JELLY_PICS = [
 	'https://i.imgur.com/m1YWCNe.jpg',
 	'https://i.imgur.com/zgl3Zx0.jpg',
 	'https://i.imgur.com/JsyFDWO.jpg',
+	'https://cdn.discordapp.com/attachments/799655603868794933/799673139788906496/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/799655603868794933/799673333637054554/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/799655603868794933/799673476209967104/proxy-image.png',
 ]
 
 JELLY_FACTS = [
@@ -99,6 +110,8 @@ KVAS_PICS = [
 	'https://i.imgur.com/ljaMcvS.png',
 	'https://i.imgur.com/WSWHPlB.png',
 	'https://i.imgur.com/l0UaRAO.png',
+	'https://cdn.discordapp.com/attachments/799655603868794933/799673927826669579/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/799655603868794933/799674014725439528/proxy-image.png'
 ]
 
 KVAS_FACTS = [
@@ -133,6 +146,8 @@ COCKTAIL_PICS = [
 	'https://i.imgur.com/EQ1GuqD.jpeg',
 	'https://i.imgur.com/UuhKaWZ.jpeg',
 	'https://i.imgur.com/2zBbgAn.jpeg',
+	'https://cdn.discordapp.com/attachments/799655603868794933/799674201941999616/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/799655603868794933/799674352248815616/proxy-image.png'
 ]
 
 COCKTAIL_FACTS = [
@@ -166,6 +181,7 @@ MILK_PICS = [
 	'https://i.imgur.com/DIwjSKn.jpg',
 	'https://i.imgur.com/mwDfMeg.jpg',
 	'https://i.imgur.com/kxpEkiQ.png',
+	'https://cdn.discordapp.com/attachments/799655603868794933/799674508926779412/proxy-image.png'
 ]
 
 MILK_FACTS = [
@@ -195,7 +211,11 @@ COCOA_PICS = [
 	'https://cdn.discordapp.com/attachments/671432725109932045/797944875768217660/00-47-11-i.jpg',
 	'https://cdn.discordapp.com/attachments/671432725109932045/797944875916066836/00-47-20-i.jpg',
 	'https://cdn.discordapp.com/attachments/671432725109932045/797944876201017374/00-47-33-i.jpg',
-	'https://cdn.discordapp.com/attachments/671432725109932045/797944876368527410/00-47-40-i.jpg'
+	'https://cdn.discordapp.com/attachments/671432725109932045/797944876368527410/00-47-40-i.jpg',
+	'https://cdn.discordapp.com/attachments/799655603868794933/799670106988478474/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/799655603868794933/799670234201980958/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/799655603868794933/799670429165027338/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/799655603868794933/799670806996975656/proxy-image.png',
 ]
 
 COCOA_FACTS = [
