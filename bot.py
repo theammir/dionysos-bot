@@ -23,13 +23,13 @@ class HelpCommand(commands.HelpCommand):
 			mapping[key] = await self.filter_commands(value)
 
 		embed = discord.Embed(colour = 0x289566, description = 'На территории барной стойки действует сухой закон, алкоголь не продаётся.',)
-		value = []
+		
 		for cog, commands in mapping.items():
 			commands = list(set(commands))
+			value = []
 			for com in commands:
 				value.append(f'`{self.context.prefix}{com.name}` - {self.format_command_aliases(com)}')
-
-		embed.add_field(name = 'Список команд:', value = '\n'.join(value))
+			embed.add_field(name = f'{cog.qualified_name if cog else "Прочее"}:', value = '\n'.join(value))
 		embed.add_field(name = 'Сервер поддержки: ', value = '**https://discord.gg/A4NETzF**')
 
 		await self.context.send(embed = embed)
@@ -43,6 +43,7 @@ bot.help_command = HelpCommand()
 @bot.event
 async def on_ready():
 	bot.load_extension('barcog')
+	bot.load_extension('snackcog')
 
 with open('token.txt', 'r') as file:
 	token = file.read()

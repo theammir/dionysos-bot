@@ -296,6 +296,21 @@ KEFIR_FACTS = [
 	'В жаркий день кефир утоляет жажду даже лучше, чем вода. Благодаря его кисловатому вкусу увеличивается выработка слюны во рту',
 ]
 
+PARVARDA_PICS = [
+	'https://cdn.discordapp.com/attachments/671432725109932045/800380583627849778/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/671432725109932045/800380712028471386/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/671432725109932045/800380804945281024/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/671432725109932045/800380876554371072/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/671432725109932045/800380922737852476/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/671432725109932045/800380997190287360/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/671432725109932045/800381080578293770/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/671432725109932045/800381153919107092/proxy-image.png',
+]
+
+PARVARDA_FACTS = [
+	''
+]
+
 ORDER_PHRASES = [
 	'Желаем хорошенько отдохнуть от ежедневной суеты! ;3',
 	'Не стесняйтесь жаловаться - только так вы сделаете ваш быт лучше, даже если ваша претензия - лишь мелочь.',
