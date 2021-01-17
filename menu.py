@@ -30,6 +30,7 @@ COFFEE_PICS = [
 	'https://cdn.discordapp.com/attachments/799655603868794933/799671062455517254/proxy-image.png',
 	'https://cdn.discordapp.com/attachments/799655603868794933/799671263702286336/proxy-image.png',
 	'https://cdn.discordapp.com/attachments/799655603868794933/799671407046950942/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/574343843864903681/800361675307483176/SmartSelect_20210117-165242_Chrome.jpg',
 ]
 
 COFFEE_FACTS = [

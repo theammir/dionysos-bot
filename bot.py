@@ -45,6 +45,23 @@ async def on_ready():
 	bot.load_extension('barcog')
 	bot.load_extension('snackcog')
 
+@bot.command(name = 'инвайт', aliases = ['invite'])
+async def bot_invite(ctx):
+	permissions = discord.Permissions(
+			create_instant_invite = True,
+			change_nickname = True,
+			read_messages = True,
+			send_messages = True,
+			send_tts_messages = True,
+			embed_links = True,
+			attach_files = True,
+			read_message_history = True,
+			use_external_emojis = True,
+			add_reactions = True
+		)
+	bot_id = bot.user.id
+	await ctx.send(embed = discord.Embed(description = f'Перейдите по следующей ссылке, что-бы пригласить бота на ваш сервер: https://discord.com/api/oauth2/authorize?client_id={bot_id}&permissions={permissions.value}&scope=bot'))
+
 with open('token.txt', 'r') as file:
 	token = file.read()
 bot.run(token)
