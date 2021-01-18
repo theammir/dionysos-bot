@@ -60,7 +60,7 @@ async def bot_invite(ctx):
 			add_reactions = True
 		)
 	bot_id = bot.user.id
-	await ctx.send(embed = discord.Embed(description = f'Перейдите по следующей ссылке, что-бы пригласить бота на ваш сервер: https://discord.com/api/oauth2/authorize?client_id={bot_id}&permissions={permissions.value}&scope=bot'))
+	await ctx.send(embed = discord.Embed(colour = 0x289566, description = f'Перейдите по следующей ссылке, что-бы пригласить бота на ваш сервер: https://discord.com/api/oauth2/authorize?client_id={bot_id}&permissions={permissions.value}&scope=bot'))
 
 with open('token.txt', 'r') as file:
 	token = file.read()

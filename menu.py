@@ -312,6 +312,23 @@ PARVARDA_FACTS = [
 	''
 ]
 
+PIZZA_PICS = [
+	'https://cdn.discordapp.com/attachments/685553321901293605/800652787666255902/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/800653134287339520/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/800653249610514432/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/800653354933682196/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/800653423875719188/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/800653599990218772/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/800653745133453332/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/800654239847940176/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/800654368625393674/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/800654617326256158/proxy-image.png'
+]
+
+PIZZA_FACTS = [
+	''
+]
+
 ORDER_PHRASES = [
 	'Желаем хорошенько отдохнуть от ежедневной суеты! ;3',
 	'Не стесняйтесь жаловаться - только так вы сделаете ваш быт лучше, даже если ваша претензия - лишь мелочь.',
