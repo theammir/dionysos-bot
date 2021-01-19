@@ -19,7 +19,7 @@ class SnackCog(commands.Cog, name = 'Закуски'):
 		await ctx.send(embed = embed)
 
 	@commands.command(name = 'пицца', aliases = ['pizza'])
-	async def order_parvarda(self, ctx):
+	async def order_pizza(self, ctx):
 		embed = discord.Embed(
 				colour = 0x289566,
 				description = random.choice(menu.ORDER_PHRASES)
