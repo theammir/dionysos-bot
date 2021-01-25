@@ -329,6 +329,26 @@ PIZZA_FACTS = [
 	''
 ]
 
+COOKIE_PICS = [
+	'https://cdn.discordapp.com/attachments/685553321901293605/802604452741513236/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/802604530021040198/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/802604600891801640/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/802605222730924062/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/802605469419831316/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/802605918852218940/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/802606000427237376/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/802606101769617479/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/802606611129565214/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/802606883180904458/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/802606981088018432/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/802607044250828850/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/663089349226790935/801034360408113162/124553_original.jpg'
+]
+
+COOKIE_FACTS = [
+	''
+]
+
 ORDER_PHRASES = [
 	'Желаем хорошенько отдохнуть от ежедневной суеты! ;3',
 	'Не стесняйтесь жаловаться - только так вы сделаете ваш быт лучше, даже если ваша претензия - лишь мелочь.',
