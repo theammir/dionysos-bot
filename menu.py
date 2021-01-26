@@ -349,6 +349,21 @@ COOKIE_FACTS = [
 	''
 ]
 
+COMPOT_PICS = [
+	'https://cdn.discordapp.com/attachments/685553321901293605/803676833769848852/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/803676957228138496/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/803677218562900008/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/803677288225964072/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/803677734164365422/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/803677832579383336/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/803677913001885807/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/803678405236883536/proxy-image.png',
+]
+
+COMPOT_FACTS = [
+	''
+]
+
 ORDER_PHRASES = [
 	'Желаем хорошенько отдохнуть от ежедневной суеты! ;3',
 	'Не стесняйтесь жаловаться - только так вы сделаете ваш быт лучше, даже если ваша претензия - лишь мелочь.',

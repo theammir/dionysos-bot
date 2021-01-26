@@ -139,5 +139,16 @@ class BarCog(commands.Cog, name = 'Барная стойка'):
 
 		await ctx.send(embed = embed)
 
+	@commands.command(name = 'компот', aliases = ['compot'])
+	async def order_compot(self, ctx):
+		embed = discord.Embed(
+				colour = 0x289566,
+				description = random.choice(menu.ORDER_PHRASES)
+			)
+		embed.set_image(url = random.choice(menu.COMPOT_PICS))
+		embed.set_footer(text = random.choice(menu.COMPOT_FACTS))
+
+		await ctx.send(embed = embed)
+
 def setup(bot):
 	bot.add_cog(BarCog(bot))
