@@ -29,6 +29,17 @@ class SnackCog(commands.Cog, name = 'Закуски'):
 
 		await ctx.send(embed = embed)
 
+	@commands.command(name = 'чипсы', aliases = ['chips', 'crisps'])
+	async def order_chips(self, ctx):
+		embed = discord.Embed(
+				colour = 0x289566,
+				description = random.choice(menu.ORDER_PHRASES)
+			)
+		embed.set_image(url = random.choice(menu.CHIPS_PICS))
+		embed.set_footer(text = random.choice(menu.CHIPS_FACTS))
+
+		await ctx.send(embed = embed)
+
 
 def setup(bot):
 	bot.add_cog(SnackCog(bot))

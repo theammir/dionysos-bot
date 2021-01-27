@@ -364,6 +364,21 @@ COMPOT_FACTS = [
 	''
 ]
 
+CHIPS_PICS = [
+	'https://cdn.discordapp.com/attachments/685553321901293605/804004028068921354/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/804004162852487208/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/804004216271798333/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/804004532434239498/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/804004629834235995/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/804005244026880060/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/804005746081398824/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/685553321901293605/804006200206557264/proxy-image.png'
+]
+
+CHIPS_FACTS = [
+	''
+]
+
 ORDER_PHRASES = [
 	'Желаем хорошенько отдохнуть от ежедневной суеты! ;3',
 	'Не стесняйтесь жаловаться - только так вы сделаете ваш быт лучше, даже если ваша претензия - лишь мелочь.',
