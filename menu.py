@@ -379,6 +379,29 @@ CHIPS_FACTS = [
 	''
 ]
 
+FRUIT_PICS = [
+	'https://cdn.discordapp.com/attachments/689102924810551385/804414104366219364/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/804414754306916432/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/804414865443127326/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/804415125711880202/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/804416870274957342/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/804417022045716480/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/804417179767275530/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/804417241042780201/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/804417409893007430/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/804417714470518905/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/804417877829615626/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/804417966220640307/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/804418333482418226/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/804418435144613988/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/804418522028441650/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/562329506199633932/804418578853396560/proxy-image2.png',
+]
+
+FRUIT_FACTS = [
+	''
+]
+
 ORDER_PHRASES = [
 	'Желаем хорошенько отдохнуть от ежедневной суеты! ;3',
 	'Не стесняйтесь жаловаться - только так вы сделаете ваш быт лучше, даже если ваша претензия - лишь мелочь.',
