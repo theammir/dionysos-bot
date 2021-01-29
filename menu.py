@@ -402,6 +402,22 @@ FRUIT_FACTS = [
 	''
 ]
 
+PELMENI_PICS = [
+	'https://cdn.discordapp.com/attachments/572325402882867201/804740356104650792/Screenshot_20210129-185044.jpg',
+	'https://cdn.discordapp.com/attachments/671432725109932045/804739544247042128/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/671432725109932045/804739903887245352/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/671432725109932045/804740064554254376/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/671432725109932045/804740166438092900/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/671432725109932045/804740243197657138/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/671432725109932045/804740359737180201/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/671432725109932045/804740423309852702/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/671432725109932045/804740680798568518/proxy-image.png'
+]
+
+PELMENI_FACTS = [
+	''
+]
+
 ORDER_PHRASES = [
 	'Желаем хорошенько отдохнуть от ежедневной суеты! ;3',
 	'Не стесняйтесь жаловаться - только так вы сделаете ваш быт лучше, даже если ваша претензия - лишь мелочь.',
