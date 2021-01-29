@@ -43,6 +43,7 @@ bot.help_command = HelpCommand()
 @bot.event
 async def on_ready():
 	bot.load_extension('barcog')
+	bot.load_extension('foodcog')
 	bot.load_extension('snackcog')
 
 @bot.command(name = 'инвайт', aliases = ['invite'])
