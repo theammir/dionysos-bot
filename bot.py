@@ -57,12 +57,12 @@ async def on_ready():
 @bot.event
 async def on_guild_join(guild):
 	channel = bot.get_channel(config.LOG_CHANNEL)
-	await channel.send(config.JOIN_MSG.format(guild = guild))
+	await channel.send(config.JOIN_MSG.format(guild = guild, count = len(bot.guilds)))
 
 @bot.event
 async def on_guild_remove(guild):
 	channel = bot.get_channel(config.LOG_CHANNEL)
-	await channel.send(config.LEAVE_MSG.format(guild = guild))
+	await channel.send(config.LEAVE_MSG.format(guild = guild, count = len(bot.guilds)))
 
 @bot.event
 async def on_member_update(before, after):
@@ -90,6 +90,7 @@ async def bot_invite(ctx):
 
 @bot.command(name = 'воут', aliases = ['vote'])
 async def dblvote(ctx):
+	await ctx.send('Привет, это Амир. Я вижу, что некоторым людям стало интересно, что из себя представляет мой бот, но, к сожалению, пока-что шампанское не доступно по техническим причинам. Простите, если уже успели почувствовать себя обманутыми. :)')
 	await ctx.send(embed = discord.Embed(colour = 0x289566, description = f'Перейдите по следующей ссылке, что-бы проголосовать за бота: https://top.gg/bot/{bot.user.id}/vote'))
 
 with open('token.txt', 'r') as file:
