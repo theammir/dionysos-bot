@@ -1,8 +1,10 @@
 import discord
+import config
+import os
 from discord.ext import commands
 
 intents = discord.Intents.default()
-intents.presences = True
+intents.presences = True; intents.members = True
 
 class HelpCommand(commands.HelpCommand):
 	def __init__(self):
@@ -42,9 +44,32 @@ bot.help_command = HelpCommand()
 
 @bot.event
 async def on_ready():
-	bot.load_extension('barcog')
-	bot.load_extension('foodcog')
-	bot.load_extension('snackcog')
+	curr_dir = os.listdir()
+	for file in curr_dir:
+		if (file.endswith('cog.py')):
+			try:
+				bot.load_extension(file[:-3])
+			except Exception as e:
+				print(f'[{file.upper()}]: LOAD FAIL! {type(e).__name__}: {e}')
+			else:
+				print(f'[{file.upper()}]: LOAD SUCCESS')
+
+@bot.event
+async def on_guild_join(guild):
+	channel = bot.get_channel(config.LOG_CHANNEL)
+	await channel.send(config.JOIN_MSG.format(guild = guild))
+
+@bot.event
+async def on_guild_remove(guild):
+	channel = bot.get_channel(config.LOG_CHANNEL)
+	await channel.send(config.LEAVE_MSG.format(guild = guild))
+
+@bot.event
+async def on_member_update(before, after):
+	channel = bot.get_channel(config.LOG_CHANNEL)
+	if (after.id == bot.user.id):
+		if (before.display_name != after.display_name):
+			await channel.send(config.CHANGE_NICKNAME_MSG.format(guild = after.guild, new = after.display_name))
 
 @bot.command(name = 'инвайт', aliases = ['invite'])
 async def bot_invite(ctx):
@@ -62,6 +87,10 @@ async def bot_invite(ctx):
 		)
 	bot_id = bot.user.id
 	await ctx.send(embed = discord.Embed(colour = 0x289566, description = f'Перейдите по следующей ссылке, что-бы пригласить бота на ваш сервер: https://discord.com/api/oauth2/authorize?client_id={bot_id}&permissions={permissions.value}&scope=bot'))
+
+@bot.command(name = 'воут', aliases = ['vote'])
+async def dblvote(ctx):
+	await ctx.send(embed = discord.Embed(colour = 0x289566, description = f'Перейдите по следующей ссылке, что-бы проголосовать за бота: https://top.gg/bot/{bot.user.id}/vote'))
 
 with open('token.txt', 'r') as file:
 	token = file.read()

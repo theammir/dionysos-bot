@@ -418,6 +418,25 @@ PELMENI_FACTS = [
 	''
 ]
 
+CHAMPAGNE_PICS = [
+	'https://cdn.discordapp.com/attachments/689102924810551385/805093588416856074/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/805093744188850176/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/805094055687094282/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/805094388098400316/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/805094461234741248/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/805094592596541490/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/805094658044329995/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/805094723982852096/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/805094791288717352/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/805094956850872330/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/805095050253172796/proxy-image.png',
+	'https://cdn.discordapp.com/attachments/689102924810551385/805095628836438076/proxy-image.png'
+]
+
+CHAMPAGNE_FACTS = [
+	'Поздравляем Амира с успешным заливом бота на top.gg! По такому поводу, заливаем игристое!'
+]
+
 ORDER_PHRASES = [
 	'Желаем хорошенько отдохнуть от ежедневной суеты! ;3',
 	'Не стесняйтесь жаловаться - только так вы сделаете ваш быт лучше, даже если ваша претензия - лишь мелочь.',
