@@ -171,7 +171,7 @@ async def feedback_handler(ctx, error):
 				colour = 0xff5555,
 				description = locs['onCd'].format(error.cooldown.rate,
 					humanize.naturaldelta(datetime.timedelta(seconds = error.cooldown.per)),
-					humanize.naturaldelta(datetime.timedelta(seconds = error.cooldown.retry_after)))
+					humanize.naturaldelta(datetime.timedelta(seconds = error.retry_after)))
 			))
 
 @bot.command(name = 'ответ', aliases = ['reply'], hidden = True)

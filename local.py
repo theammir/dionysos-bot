@@ -38,12 +38,15 @@ ENGLISH = {
 }
 
 def get_localized(context):
-	query = tinydb.Query()
-	guild_settings = tinydb.TinyDB('guild_settings.json')
-	search = guild_settings.search(query.guild == context.guild.id)
-	if (search):
-		search = search[0]
-		return RUSSIAN if search['isRU'] else ENGLISH
+	if (context.guild):
+		query = tinydb.Query()
+		guild_settings = tinydb.TinyDB('guild_settings.json')
+		search = guild_settings.search(query.guild == context.guild.id)
+		if (search):
+			search = search[0]
+			return RUSSIAN if search['isRU'] else ENGLISH
+		else:
+			return ENGLISH
 	else:
 		return ENGLISH
 
