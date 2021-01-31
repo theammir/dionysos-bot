@@ -3,7 +3,7 @@ import menu
 import random
 from discord.ext import commands
 
-class SnackCog(commands.Cog, name = 'Закуски'):
+class SnackCog(commands.Cog, name = '{snackcog}'):
 	def __init__(self, bot):
 		self.bot = bot
 

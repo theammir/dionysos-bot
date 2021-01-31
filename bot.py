@@ -1,6 +1,10 @@
 import discord
 import config
 import os
+import tinydb
+import asyncio
+import humanize, datetime
+import local
 from discord.ext import commands
 
 intents = discord.Intents.default()
@@ -14,32 +18,37 @@ class HelpCommand(commands.HelpCommand):
 				'aliases': ['help', 'меню', 'menu']
 			})
 
-	def format_command_aliases(self, command):
+	def format_command(self, command):
 		if not (command.aliases):
 			return
 
 		return ', '.join(f'`{alias}`' for alias in command.aliases)
 
 	async def send_bot_help(self, mapping):
+		locs = local.get_localized(self.context)
 		for key, value in mapping.items():
 			mapping[key] = await self.filter_commands(value)
+			if (key):
+				cog_names = locs['cogs']
+				key.name = key.qualified_name.format_map(cog_names)
 
-		embed = discord.Embed(colour = 0x289566, description = 'На территории барной стойки действует сухой закон, алкоголь не продаётся.',)
-		
+		embed = discord.Embed(colour = 0x289566, description = locs['helpDesc'])
+		embed.set_footer
+
 		for cog, commands in mapping.items():
 			commands = list(set(commands))
 			value = []
 			for com in commands:
-				value.append(f'`{self.context.prefix}{com.name}` - {self.format_command_aliases(com)}')
-			embed.add_field(name = f'{cog.qualified_name if cog else "Прочее"}:', value = '\n'.join(value))
-		embed.add_field(name = 'Сервер поддержки: ', value = '**https://discord.gg/A4NETzF**')
+				value.append(f'`{self.context.prefix}{com.name}` - {self.format_command(com)}')
+			embed.add_field(name = f'{cog.name if cog else locs["nocog"]}:', value = '\n'.join(value))
+		embed.add_field(name = locs['support'], value = '**https://discord.gg/A4NETzF**')
 
 		await self.context.send(embed = embed)
 
 def get_pre(bot, message):
-	return ['a!', 'а!']
+	return ['a!', 'а!', 'A!', 'А!']
 
-bot = commands.Bot(command_prefix = get_pre, intents = intents, status = discord.Status.dnd, activity = discord.Game(name = 'a!хелп'))
+bot = commands.Bot(command_prefix = get_pre, intents = intents, status = discord.Status.dnd, activity = discord.Game(name = 'a!help | a!хелп'))
 bot.help_command = HelpCommand()
 
 @bot.event
@@ -71,8 +80,46 @@ async def on_member_update(before, after):
 		if (before.display_name != after.display_name):
 			await channel.send(config.CHANGE_NICKNAME_MSG.format(guild = after.guild, new = after.display_name))
 
+@bot.command(name = 'настройки', aliases = ['settings'])
+async def settings(ctx):
+	def generate_embed(ctx):
+		locs = local.get_localized(ctx)
+		embed = discord.Embed(
+				colour = 0x289566,
+				title = locs['botS'],
+				description = f'**{locs["switch"]}:** 🔁'
+			)
+		embed.description += f'\n\n{locs["con"]}: ✅'
+		return embed
+	emb_msg = await ctx.send(embed = generate_embed(ctx))
+
+	while True:
+		locs = local.get_localized(ctx)
+		await emb_msg.add_reaction('🔁')
+		await emb_msg.add_reaction('✅')
+		try:
+			reaction, user = await bot.wait_for('reaction_add', timeout = 15.0, check = lambda rea, usr: str(rea) in '🔁✅' and usr == ctx.message.author and rea.message == emb_msg)
+		except asyncio.TimeoutError:
+			break
+
+		if (str(reaction) == '✅'):
+			break
+
+		if not (user.guild_permissions.administrator or user.guild_permissions.manage_guild):
+			embed.set_footer(text = f'❎ {locs["adminWarn"]}')
+			await emb_msg.edit(embed = embed)
+
+		else:
+			local.change_locs(ctx.guild)
+
+			embed = generate_embed(ctx)
+			embed.set_footer(text = f'✅ {locs["sCon"]}')
+			await emb_msg.edit(embed = embed)
+
+
 @bot.command(name = 'инвайт', aliases = ['invite'])
 async def bot_invite(ctx):
+	locs = local.get_localized(ctx)
 	permissions = discord.Permissions(
 			create_instant_invite = True,
 			change_nickname = True,
@@ -86,12 +133,53 @@ async def bot_invite(ctx):
 			add_reactions = True
 		)
 	bot_id = bot.user.id
-	await ctx.send(embed = discord.Embed(colour = 0x289566, description = f'Перейдите по следующей ссылке, что-бы пригласить бота на ваш сервер: https://discord.com/api/oauth2/authorize?client_id={bot_id}&permissions={permissions.value}&scope=bot'))
+	await ctx.send(embed = discord.Embed(colour = 0x289566, description = f'{locs["invite"]}https://discord.com/api/oauth2/authorize?client_id={bot_id}&permissions={permissions.value}&scope=bot'))
 
 @bot.command(name = 'воут', aliases = ['vote'])
 async def dblvote(ctx):
-	await ctx.send('Привет, это Амир. Я вижу, что некоторым людям стало интересно, что из себя представляет мой бот, но, к сожалению, пока-что шампанское не доступно по техническим причинам. Простите, если уже успели почувствовать себя обманутыми. :)')
-	await ctx.send(embed = discord.Embed(colour = 0x289566, description = f'Перейдите по следующей ссылке, что-бы проголосовать за бота: https://top.gg/bot/{bot.user.id}/vote'))
+	locs = local.get_localized(ctx)
+	await ctx.send(locs["bug0"])
+	await ctx.send(embed = discord.Embed(colour = 0x289566, description = f'{locs["vote"]}https://top.gg/bot/{bot.user.id}/vote'))
+
+@commands.cooldown(1, 60*60, commands.BucketType.user)
+@bot.command(name = 'отзыв', aliases = ['feedback'])
+async def give_feedback(ctx, *, feedback = ''):
+	locs = local.get_localized(ctx)
+	if (not feedback):
+		await ctx.send(embed = discord.Embed(
+				colour = 0x289566,
+				description = locs['fbBrief']
+			))
+	else:
+		owner = bot.get_user(343001477133893632)
+		await owner.send(f'{ctx.author.name} ({ctx.author.id}): {feedback}')
+		await ctx.send(embed = discord.Embed(
+				colour = 0x289566,
+				description = locs['sCon']
+			))
+
+@give_feedback.error
+async def feedback_handler(ctx, error):
+	locs = local.get_localized(ctx)
+	if (local.is_ru(ctx.guild)):
+		humanize.i18n.activate('ru_RU')
+	else:
+		humanize.i18n.activate('en_GB')
+	if (isinstance(error, commands.CommandOnCooldown)):
+		await ctx.send(embed = discord.Embed(
+				colour = 0xff5555,
+				description = locs['onCd'].format(error.cooldown.rate,
+					humanize.naturaldelta(datetime.timedelta(seconds = error.cooldown.per)),
+					humanize.naturaldelta(datetime.timedelta(seconds = error.cooldown.retry_after)))
+			))
+
+@bot.command(name = 'ответ', aliases = ['reply'], hidden = True)
+async def reply(ctx, id, *, text):
+	reply_user = bot.get_user(id)
+	try:
+		await reply_user.user(text)
+	except discord.DiscordException as e:
+		await ctx.send(type(e).__name__ + ': ' + e)
 
 with open('token.txt', 'r') as file:
 	token = file.read()

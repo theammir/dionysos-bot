@@ -6,12 +6,12 @@ import config
 import dbl
 from discord.ext import commands
 
-class TopGG(commands.Cog, name = '🥳СОБЫТИЕ'):
+class TopGG(commands.Cog, name = '{topggcog}'):
 	def __init__(self, bot):
 		self.bot = bot
 		with open('dbltoken.txt', 'r') as f:
 			self.token = f.readlines()[0].replace('\n', '')
-			self.dblpy = dbl.DBLClient(self.bot, self.token, autopost = True)
+			self.dblpy = dbl.DBLClient(self.bot, self.token, autopost = True, webhook_path='/dblwebhook', webhook_auth='dionysos1', webhook_port = '8000')
 		self.db = tinydb.TinyDB('user_votes.json')
 		self.query = tinydb.Query()
 		
@@ -42,6 +42,7 @@ class TopGG(commands.Cog, name = '🥳СОБЫТИЕ'):
 
 	@commands.command(name = 'шампанское', aliases = ['champagne', 'шампусик', 'шампунь'])
 	async def order_champagne(self, ctx):
+		locs = local.get_localized(ctx)
 		if (self.take_vote(ctx.author.id)):
 			embed = discord.Embed(
 				colour = 0x289566,
@@ -54,7 +55,7 @@ class TopGG(commands.Cog, name = '🥳СОБЫТИЕ'):
 		else:
 			await ctx.send(embed = discord.Embed(
 					colour = 0xff5555,
-					description = 'У вас недостаточно голосов для заказа данного пункта меню. Обратитесь в `a!воут`.'
+					description = locs['novote']
 				))
 
 def setup(bot):

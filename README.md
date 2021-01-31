@@ -7,7 +7,10 @@ ___
 
 ![Python Version](https://img.shields.io/badge/python_>%3D-3.8.3-green) ![discord-py](https://img.shields.io/badge/discord.py-1.5.1-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Language](https://img.shields.io/badge/language-RUS-green)
+![Language](https://img.shields.io/badge/language-ENG|RUS-green)
+
+### Dionysos now supports English - I will tell you more, it is set as default one from now on.
+However, all the facts you can see are not translated yet and the help command needs some additional work on it.
 
 #### Привет!
 Хочешь выпить? Нет-нет, алгоколь не предлагаю, ты что - тебе ещё жить со своей отказавшей печенью потом, а я как буду за стойкой сидеть, так и останусь, делай выводы.
