@@ -56,7 +56,7 @@ class TopGG(commands.Cog, name = '{topggcog}'):
 		else:
 			await ctx.send(embed = discord.Embed(
 					colour = 0xff5555,
-					description = locs['novote']
+					description = locs['novotes']
 				))
 
 def setup(bot):
