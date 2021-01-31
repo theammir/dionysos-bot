@@ -94,7 +94,6 @@ async def settings(ctx):
 	emb_msg = await ctx.send(embed = generate_embed(ctx))
 
 	while True:
-		locs = local.get_localized(ctx)
 		await emb_msg.add_reaction('🔁')
 		await emb_msg.add_reaction('✅')
 		try:
@@ -106,11 +105,13 @@ async def settings(ctx):
 			break
 
 		if not (user.guild_permissions.administrator or user.guild_permissions.manage_guild):
+			locs = local.get_localized(ctx)
 			embed.set_footer(text = f'❎ {locs["adminWarn"]}')
 			await emb_msg.edit(embed = embed)
 
 		else:
 			local.change_locs(ctx.guild)
+			locs = local.get_localized(ctx)
 
 			embed = generate_embed(ctx)
 			embed.set_footer(text = f'✅ {locs["sCon"]}')
