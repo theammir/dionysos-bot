@@ -178,7 +178,7 @@ async def feedback_handler(ctx, error):
 async def reply(ctx, id, *, text):
 	reply_user = bot.get_user(id)
 	try:
-		await reply_user.user(text)
+		await reply_user.send(text)
 	except discord.DiscordException as e:
 		await ctx.send(type(e).__name__ + ': ' + e)
 
