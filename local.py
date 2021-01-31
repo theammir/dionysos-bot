@@ -65,14 +65,17 @@ def change_locs(guild):
 		guild_settings.insert({'guild': gid, 'isRU': True})
 
 def is_ru(guild):
-	gid = guild.id
-	query = tinydb.Query()
-	guild_settings = tinydb.TinyDB('guild_settings.json')
-	search = guild_settings.search(query.guild == gid)
-	if search:
-		search = search[0]
-		if (search['isRU']):
-			return True
+	if (guild):
+		gid = guild.id
+		query = tinydb.Query()
+		guild_settings = tinydb.TinyDB('guild_settings.json')
+		search = guild_settings.search(query.guild == gid)
+		if search:
+			search = search[0]
+			if (search['isRU']):
+				return True
+			else:
+				return False
 		else:
 			return False
 	else:
