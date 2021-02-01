@@ -12,7 +12,7 @@ class TopGG(commands.Cog, name = '{topggcog}'):
 		self.bot = bot
 		with open('dbltoken.txt', 'r') as f:
 			self.token = f.readlines()[0].replace('\n', '')
-			self.dblpy = dbl.DBLClient(self.bot, self.token, autopost = True, webhook_path='/dblwebhook', webhook_auth='dionysos1', webhook_port = '8000')
+			self.dblpy = dbl.DBLClient(self.bot, self.token, autopost = True, webhook_path='http://95.179.167.177:8000/dblwebhook', webhook_auth='dionysos1', webhook_port = '8000')
 		self.db = tinydb.TinyDB('user_votes.json')
 		self.query = tinydb.Query()
 		
