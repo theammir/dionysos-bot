@@ -26,11 +26,18 @@ class HelpCommand(commands.HelpCommand):
 
 	async def send_bot_help(self, mapping):
 		locs = local.get_localized(self.context)
+		jishaku = False
 		for key, value in mapping.items():
 			mapping[key] = await self.filter_commands(value)
 			if (key):
 				cog_names = locs['cogs']
 				key.name = key.qualified_name.format_map(cog_names)
+
+				if (key.qualified_name == 'Jishaku'):
+					jishaku = key
+
+		if (jishaku):
+			del mapping[jishaku]
 
 		embed = discord.Embed(colour = 0x289566, description = locs['helpDesc'])
 		embed.set_footer
@@ -63,6 +70,8 @@ async def on_ready():
 			else:
 				print(f'[{file.upper()}]: LOAD SUCCESS')
 
+	bot.load_extension('jishaku')
+
 @bot.event
 async def on_guild_join(guild):
 	channel = bot.get_channel(config.LOG_CHANNEL)
@@ -93,29 +102,38 @@ async def settings(ctx):
 		return embed
 	emb_msg = await ctx.send(embed = generate_embed(ctx))
 
+	await emb_msg.add_reaction('🔁')
+	await emb_msg.add_reaction('✅')
+
 	while True:
 		locs = local.get_localized(ctx)
-		await emb_msg.add_reaction('🔁')
-		await emb_msg.add_reaction('✅')
+		embed = generate_embed(ctx)
+
 		try:
 			reaction, user = await bot.wait_for('reaction_add', timeout = 15.0, check = lambda rea, usr: str(rea) in '🔁✅' and usr == ctx.message.author and rea.message == emb_msg)
 		except asyncio.TimeoutError:
 			break
 
-		embed = generate_embed(ctx)
+		
 
 		if (str(reaction) == '✅'):
+			await emb_msg.delete()
+			await ctx.send(locs['sCon'])
 			break
 
 		if not (user.guild_permissions.administrator or user.guild_permissions.manage_guild):
+			embed = generate_embed(ctx)
 			embed.set_footer(text = f'❎ {locs["adminWarn"]}')
 			await emb_msg.edit(embed = embed)
 
 		else:
-			local.change_locs(ctx.guild)
+			if (str(reaction) == '🔁'):
+				local.change_locs(ctx.guild)
+				locs = local.get_localized(ctx)
+				embed = generate_embed(ctx)
 
-			embed.set_footer(text = f'✅ {locs["sCon"]}')
-			await emb_msg.edit(embed = embed)
+				embed.set_footer(text = f'✅ {locs["sCon"]}')
+				await emb_msg.edit(embed = embed)
 
 
 @bot.command(name = 'инвайт', aliases = ['invite'])
@@ -165,7 +183,7 @@ async def feedback_handler(ctx, error):
 	if (local.is_ru(ctx.guild)):
 		humanize.i18n.activate('ru_RU')
 	else:
-		humanize.i18n.activate('en_GB')
+		humanize.i18n.deactivate()
 	if (isinstance(error, commands.CommandOnCooldown)):
 		await ctx.send(embed = discord.Embed(
 				colour = 0xff5555,
