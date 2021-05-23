@@ -1,5 +1,5 @@
-token.txt
-dbltoken.txt
+BOT_TOKEN.env
+DBL_TOKEN.env
 
 guild_settings.json
 user_votes.json

@@ -4,6 +4,7 @@ import os
 import tinydb
 import asyncio
 import humanize, datetime
+import start
 import local
 from discord.ext import commands
 
@@ -200,6 +201,5 @@ async def reply(ctx, id, *, text):
 	except discord.DiscordException as e:
 		await ctx.send(type(e).__name__ + ': ' + e)
 
-with open('token.txt', 'r') as file:
-	token = file.read()
-bot.run(token)
+
+bot.run(start.bot_token)
