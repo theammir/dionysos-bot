@@ -3,3 +3,6 @@ dbltoken.txt
 
 guild_settings.json
 user_votes.json
+
+.venv
+__pycache__
