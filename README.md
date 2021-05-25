@@ -5,7 +5,7 @@
 
 ___
 
-![Python Version](https://img.shields.io/badge/python_>%3D-3.8.3-green) ![discord-py](https://img.shields.io/badge/discord.py-1.5.1-blue)
+![Python Version](https://img.shields.io/badge/python_>%3D-3.8.3-green) ![discord-py](https://img.shields.io/badge/discord.py-1.5.1[upto]1.7.1-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Language](https://img.shields.io/badge/language-ENG|RUS-green)
 
