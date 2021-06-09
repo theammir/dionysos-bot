@@ -13,12 +13,12 @@ class FoodCog(commands.Cog, name = '{foodcog}'):
 				colour = 0x289566,
 				description = random.choice(menu.ORDER_PHRASES)
 			)
-		embed.set_image(url = random.choice(menu.PIZZA_PICS))
+		embed.set_image(url = random.choice(menu.PIZZA_PICS)) # But without pineapples, you, not Italian))
 		embed.set_footer(text = random.choice(menu.PIZZA_FACTS))
 
 		await ctx.send(embed = embed)
 
-	@commands.command(name = 'пельмени', aliases = ['pelmeni'])
+	@commands.command(name = 'пельмени', aliases = ['pelmeni', 'dumplings'])
 	async def order_pelmeni(self, ctx):
 		embed = discord.Embed(
 				colour = 0x289566,
