@@ -14,6 +14,6 @@ if __name__ == '__main__':
 
     if not (dbl_token):
         with open('DBL_TOKEN.env', 'w') as f:
-            f.write('DBL_TOKEN' + input('Enter dbl token: '))
+            f.write('DBL_TOKEN=' + input('Enter dbl token: '))
 
     print("You can start bot.py file now")
