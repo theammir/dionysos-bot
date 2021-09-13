@@ -18,7 +18,7 @@ class FoodCog(commands.Cog, name = '{foodcog}'):
 
 		await ctx.send(embed = embed)
 
-	@commands.command(name = 'пельмени', aliases = ['pelmeni'])
+	@commands.command(name = 'пельмени', aliases = ['pelmeni, dumplings'])
 	async def order_pelmeni(self, ctx):
 		embed = discord.Embed(
 				colour = 0x289566,
