@@ -469,6 +469,22 @@ CHAMPAGNE_FACTS = [
 	'Поздравляем Амира с успешным заливом бота на top.gg! По такому поводу, заливаем игристое!'
 ]
 
+CHICORY_PICS = [
+        'https://media.discordapp.net/attachments/887706871862030406/887707072316198962/tsikoriy-dlya-pohudeniya.jpg',
+        'https://media.discordapp.net/attachments/887706871862030406/887707072924385320/cik.jpg',
+        'https://media.discordapp.net/attachments/887706871862030406/887707073368956948/8615446d1a6c31420b5142852a338f29.jpg',
+        'https://media.discordapp.net/attachments/887706871862030406/887707073855508520/zikorei-5-1.jpg',
+        'https://media.discordapp.net/attachments/887706871862030406/887707074119757874/e9ab4b032ad5feb7c6a0e14cf0329d4f.jpg',
+        'https://media.discordapp.net/attachments/887706871862030406/887707665919254578/chicory-drink-in-a-white-cup-with-a-flower-on-a-saucer-and-spoon_423299-311.jpg',
+        'https://media.discordapp.net/attachments/887706871862030406/887707666212880404/6cf58e043b6da46e115fd3037b329bb9_ce_1200x802x0x0.jpeg.jpg',
+        'https://media.discordapp.net/attachments/887706871862030406/887707666523254854/992x496.webp',
+        'https://media.discordapp.net/attachments/887706871862030406/887707666883936336/1583341370-9258.jpg'
+]
+
+CHICORY_FACTS = [
+        ""
+]
+
 ORDER_PHRASES = [
 	'Желаем хорошенько отдохнуть от ежедневной суеты! ;3',
 	'Не стесняйтесь жаловаться - только так вы сделаете ваш быт лучше, даже если ваша претензия - лишь мелочь.',
