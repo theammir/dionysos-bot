@@ -6,6 +6,7 @@ import asyncio
 import humanize, datetime
 import start
 import local
+import sys
 from discord.ext import commands
 
 intents = discord.Intents.default()
@@ -41,7 +42,7 @@ class HelpCommand(commands.HelpCommand):
 			del mapping[jishaku]
 
 		embed = discord.Embed(colour = 0x289566, description = locs['helpDesc'])
-		embed.set_footer
+		embed.set_footer(text=locs['aliasWarn'])
 
 		for cog, commands in mapping.items():
 			commands = list(set(commands))
@@ -201,5 +202,7 @@ async def reply(ctx, id, *, text):
 	except discord.DiscordException as e:
 		await ctx.send(type(e).__name__ + ': ' + e)
 
-
+if ("--keep-alive" in sys.argv):
+	import keep_alive
+	keep_alive.keep_alive()
 bot.run(start.bot_token)
