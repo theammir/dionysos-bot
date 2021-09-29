@@ -18,7 +18,7 @@ class FoodCog(commands.Cog, name = '{foodcog}'):
 
 		await ctx.send(embed = embed)
 
-	@commands.command(name = 'пельмени', aliases = ['pelmeni, dumplings'])
+	@commands.command(name = 'пельмени', aliases = ['pelmeni', 'dumplings'])
 	async def order_pelmeni(self, ctx):
 		embed = discord.Embed(
 				colour = 0x289566,
@@ -29,6 +29,16 @@ class FoodCog(commands.Cog, name = '{foodcog}'):
 
 		await ctx.send(embed = embed)
 
+	@commands.command(name = 'блины', aliases = ['pancakes'])
+	async def order_pancakes(self, ctx):
+		embed = discord.Embed(
+				colour = 0x289566,
+				description = random.choice(menu.ORDER_PHRASES)
+			)
+		embed.set_image(url = random.choice(menu.PANCAKE_PICS))
+		embed.set_footer(text = random.choice(menu.PANCAKE_FACTS))
+
+		await ctx.send(embed = embed)
 
 def setup(bot):
 	bot.add_cog(FoodCog(bot))

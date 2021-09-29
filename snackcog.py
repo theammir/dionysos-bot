@@ -18,6 +18,17 @@ class SnackCog(commands.Cog, name = '{snackcog}'):
 
 		await ctx.send(embed = embed)
 
+	@commands.command(name = 'печенье', aliases = ['cookie', 'cookies', 'печенька', 'печеньки'])
+	async def order_cookies(self, ctx):
+		embed = discord.Embed(
+				colour = 0x289566,
+				description = random.choice(menu.ORDER_PHRASES)
+			)
+		embed.set_image(url = random.choice(menu.COOKIE_PICS))
+		embed.set_footer(text = random.choice(menu.COOKIE_FACTS))
+
+		await ctx.send(embed = embed)
+
 	@commands.command(name = 'чипсы', aliases = ['chips', 'crisps'])
 	async def order_chips(self, ctx):
 		embed = discord.Embed(
