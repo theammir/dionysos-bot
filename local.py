@@ -13,8 +13,9 @@ RUSSIAN = {
 	'botS': 'Настройки бота',
 	'switch': 'Switch language',
 	'adminWarn': 'Вы должны обладать правами администратора или правами управления сервером для данного действия.',
+	'noAliases': "нет других названий",
 	'aliasWarn': "А вы знали?: Вы можете использовать команды бота на обоих языках вне зависимости от установленного на сервере.",
-	'sCon': 'Успех!',
+	'sCon': 'Успешно изменён язык бота на сервере.',
 	'con': 'Применить',
 	'fbBrief': 'Это команда для отправки отзыва разработчику бота в личные сообщения. Вы можете использовать её раз в час - просто напишите своё сообщение через пробел после команды.',
 	'onCd': 'Данную команду можно использовать {0} раз(а) в {1}. Попробуйте ещё раз через **{2}**.'
@@ -32,8 +33,9 @@ ENGLISH = {
 	'botS': 'Bot settings',
 	'switch': 'Сменить язык',
 	'adminWarn': 'You require admin or manage server permissions to do this.',
+	'noAliases': "no aliases",
 	'aliasWarn': "TIP: You know you don't have to copy russian command name to actually use it, right? Just use english 'a' letter followed by '!' and type any english alias that is provided above.",
-	'sCon': 'Success!',
+	'sCon': 'Successfully changed server\'s bot language',
 	'con': 'Confirm',
 	'fbBrief': 'This is a command for giving your feedback to bot developer. You can use it 1time/hour. Just write your feedback right after command\'s name, followed by space. :)',
 	'onCd': 'You can use this command {0} times in {1}. Try again in **{2}**.'
@@ -66,6 +68,8 @@ def change_locs(guild):
 	else:
 		guild_settings.insert({'guild': gid, 'isRU': True})
 
+	return True
+
 def is_ru(guild):
 	if (guild):
 		gid = guild.id
@@ -76,9 +80,4 @@ def is_ru(guild):
 			search = search[0]
 			if (search['isRU']):
 				return True
-			else:
-				return False
-		else:
-			return False
-	else:
-		return False
+	return False

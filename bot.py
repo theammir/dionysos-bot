@@ -1,4 +1,5 @@
 import discord
+import topgg
 import config
 import os
 import tinydb
@@ -7,7 +8,7 @@ import humanize, datetime
 import start
 import local
 import sys
-from discord.ext import commands
+from discord.ext import commands, tasks
 
 intents = discord.Intents.default()
 intents.presences = True; intents.members = True
@@ -21,10 +22,18 @@ class HelpCommand(commands.HelpCommand):
 			})
 
 	def format_command(self, command):
-		if not (command.aliases):
-			return
+		name, aliases = command.name, command.aliases
+		if aliases:
+			aliases = sorted(aliases, reverse=True)
+			if not local.is_ru(self.context.guild):
+				name, aliases[-1] = aliases[-1], name
+				aliases = sorted(aliases)
+		else:
+			aliases = local.get_localized(self.context)['noAliases']
 
-		return ', '.join(f'`{alias}`' for alias in command.aliases)
+		return f"`{self.context.prefix}{name}` - " + ', '.join([f"`{alias}`" for alias in aliases] if isinstance(aliases, list) else aliases)
+
+
 
 	async def send_bot_help(self, mapping):
 		locs = local.get_localized(self.context)
@@ -48,7 +57,7 @@ class HelpCommand(commands.HelpCommand):
 			commands = list(set(commands))
 			value = []
 			for com in commands:
-				value.append(f'`{self.context.prefix}{com.name}` - {self.format_command(com)}')
+				value.append(self.format_command(com))
 			embed.add_field(name = f'{cog.name if cog else locs["nocog"]}:', value = '\n'.join(value))
 		embed.add_field(name = locs['support'], value = '**https://discord.gg/A4NETzF**')
 
@@ -59,6 +68,12 @@ def get_pre(bot, message):
 
 bot = commands.Bot(command_prefix = get_pre, intents = intents, status = discord.Status.dnd, activity = discord.Game(name = 'a!help | a!хелп'))
 bot.help_command = HelpCommand()
+
+bot.topggpy = topgg.DBLClient(bot, start.dbl_token)
+
+@tasks.loop(minutes=30)
+async def post_guild_count():
+	await bot.topggpy.post_guild_count()
 
 @bot.event
 async def on_ready():
@@ -76,11 +91,15 @@ async def on_ready():
 
 @bot.event
 async def on_guild_join(guild):
+	if guild.name is None:
+		return
 	channel = bot.get_channel(config.LOG_CHANNEL)
 	await channel.send(config.JOIN_MSG.format(guild = guild, count = len(bot.guilds)))
 
 @bot.event
 async def on_guild_remove(guild):
+	if guild.name is None:
+		return # Prevents some sudden messages
 	channel = bot.get_channel(config.LOG_CHANNEL)
 	await channel.send(config.LEAVE_MSG.format(guild = guild, count = len(bot.guilds)))
 
@@ -90,6 +109,20 @@ async def on_member_update(before, after):
 	if (after.id == bot.user.id):
 		if (before.display_name != after.display_name):
 			await channel.send(config.CHANGE_NICKNAME_MSG.format(guild = after.guild, new = after.display_name))
+
+@bot.command(name = 'язык', aliases = ['language', 'lang'])
+async def switch_lang(ctx):
+	locs = local.get_localized(ctx)
+	if not (ctx.author.guild_permissions.administrator or ctx.author.guild_permissions.manage_guild):
+		msg = await ctx.send(locs["adminWarn"])
+		await asyncio.sleep(3)
+		await msg.delete()
+		return
+
+	result = local.change_locs(ctx.guild)
+	locs = local.get_localized(ctx)
+	if result:
+		await ctx.send(locs['sCon'])
 
 @bot.command(name = 'настройки', aliases = ['settings'])
 async def settings(ctx):
@@ -116,7 +149,7 @@ async def settings(ctx):
 		except asyncio.TimeoutError:
 			break
 
-		
+
 
 		if (str(reaction) == '✅'):
 			await emb_msg.delete()
@@ -159,7 +192,6 @@ async def bot_invite(ctx):
 @bot.command(name = 'воут', aliases = ['vote'])
 async def dblvote(ctx):
 	locs = local.get_localized(ctx)
-	await ctx.send(locs["bug0"])
 	await ctx.send(embed = discord.Embed(colour = 0x289566, description = f'{locs["vote"]}https://top.gg/bot/{bot.user.id}/vote'))
 
 @commands.cooldown(1, 60*60, commands.BucketType.user)
